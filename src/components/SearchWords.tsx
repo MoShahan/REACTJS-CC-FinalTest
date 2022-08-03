@@ -1,12 +1,17 @@
 import { Button, Paper } from "@mui/material";
 import React, { useState } from "react";
+import { WordType } from "../pages/User";
 import WordDetails from "./WordDetails";
 
-const SearchWords = ({ words }: any) => {
+type SearchWordsProps = {
+  words: Array<WordType>;
+};
+
+const SearchWords = ({ words }: SearchWordsProps) => {
   const [showDetails, setShowDetails] = useState<boolean>(false);
   const [currWordDetails, setCurrWordDetails] = useState<any>();
-//   console.log("SearchWords has been rendered");
-//   console.log(words);
+  //   console.log("SearchWords has been rendered");
+  //   console.log(words);
 
   return (
     <Paper
