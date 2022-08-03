@@ -1,8 +1,13 @@
 import { Paper } from "@mui/material";
 import React from "react";
 import ReactAudioPlayer from "react-audio-player";
+import { WordType } from "../pages/User";
 
-const WordDetails = ({ displayWord }: any) => {
+type WordDetailsProps = {
+  displayWord: WordType;
+};
+
+const WordDetails = ({ displayWord }: WordDetailsProps) => {
   // console.log(displayWord);
 
   return (
