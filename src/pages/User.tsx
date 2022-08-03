@@ -5,14 +5,20 @@ import { DICTIONARY_API, RANDOM_WORD_API } from "../App";
 import RandomWordBox from "../components/RandomWordBox";
 import SearchWords from "../components/SearchWords";
 
+export type WordType = {
+  word: string;
+  phonetic: string;
+  phonetics: any[];
+  meanings: any[];
+};
+
 const User = () => {
   const [word, setWord] = useState<string>("");
   const [wordDef, setWordDef] = useState<string>("");
-  const [details, setDetails] = useState<any>();
   const [loading, setLoading] = useState<boolean>(true);
   const [searchWord, setSearchWord] = useState<string>("");
   const [isRandomWord, setIsRandomWord] = useState<boolean>(true);
-  const [searchResults, setSearchResults] = useState<Array<any>>([]);
+  const [searchResults, setSearchResults] = useState<Array<WordType>>([]);
 
   useEffect(() => {
     axios
@@ -64,14 +70,19 @@ const User = () => {
       </form>
       <hr />
       {loading ? (
-        <CircularProgress />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            margin: "auto",
+          }}
+        >
+          <CircularProgress />
+        </div>
       ) : isRandomWord ? (
         <div>
-          <RandomWordBox
-            word={word}
-            // onClick={getMoreDetails}
-            definition={wordDef}
-          />
+          <RandomWordBox word={word} definition={wordDef} />
         </div>
       ) : (
         <div>
