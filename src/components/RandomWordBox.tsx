@@ -4,7 +4,12 @@ import WordDetails from "./WordDetails";
 import axios from "axios";
 import { DICTIONARY_API } from "../App";
 
-const RandomWordBox = ({ word, definition }: any) => {
+type RandomWordBoxProps = {
+  word: string;
+  definition: string;
+};
+
+const RandomWordBox = ({ word, definition }: RandomWordBoxProps) => {
   //   console.log("Random Word ===", word);
   const [showRDetails, setShowRDetails] = useState<boolean>(false);
   const [thisWordDetails, setThisWordDetails] = useState<Array<any>>([]);
@@ -42,7 +47,9 @@ const RandomWordBox = ({ word, definition }: any) => {
           </Button>
         </>
       ) : (
-        <WordDetails displayWord={thisWordDetails} />
+        <>
+          {/* <WordDetails displayWord={thisWordDetails} /> */}
+        </>
       )}
     </Paper>
   );
